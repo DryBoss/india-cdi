@@ -1,0 +1,69 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+html {
+  font-family: Arial, sans-serif;
+}
+
+@import "animations";
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.game-board {
+  position: relative;
+  width: 600px;
+  height: 200px;
+  border: 2px solid #333;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.runner {
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  transition: width 0.3s, height 0.3s;
+  &.jump {
+    animation: jump 0.3s linear;
+  }
+  &.duck {
+    width: 60px;
+    height: 20px;
+    background-color: #444;
+  }
+}
+
+.product {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 40px;
+  background-color: #555;
+}
+
+#product1 {
+  animation: move 2s infinite linear;
+}
+
+#product2 {
+  animation: move 3s infinite linear;
+}
+
+#product3 {
+  animation: move 4s infinite linear;
+}
