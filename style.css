@@ -71,7 +71,7 @@ body {
   width: 20px;
   height: 40px;
   background-color: #555;
-  animation: move 3s infinite linear;
+  animation: move 2s infinite linear;
 }
 
 #product1 {
