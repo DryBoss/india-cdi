@@ -1,4 +1,5 @@
 //selecting elements
+const root = document.documentElement;
 const runner = document.getElementById("runner");
 const products = [
   document.getElementById("product1"),
@@ -10,7 +11,7 @@ const powerUp = document.getElementById("power-up");
 //game variables
 let isJumping = false;
 let isDucking = false;
-let speed = 2;
+let speedFactor = 1;
 let score = 0;
 
 //controls
@@ -86,7 +87,8 @@ let isAlive = setInterval(() => {
   handleCollision();
 
   // Increase speed over time
-  speed += 0.001;
+  speedFactor += 0.001;
+  root.style.setProperty("--speedFactor", `${speedFactor}s`);
 
   products.forEach((product) => {
     product.style.animationDuration = `${2 / speed}s`;

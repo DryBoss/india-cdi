@@ -1,3 +1,6 @@
+//variable
+$runner-speed: 1s;
+
 *,
 *:before,
 *:after {
@@ -8,6 +11,10 @@
 
 html {
   font-family: Arial, sans-serif;
+}
+
+:root {
+  --baseSpeed: 1s; /* Default animation duration */
 }
 
 @import "animations";
