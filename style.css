@@ -12,7 +12,7 @@ html {
 
 @keyframes move {
   0% {
-    right: 0;
+    right: -20%;
   }
   100% {
     right: 100%;
@@ -71,16 +71,31 @@ body {
   width: 20px;
   height: 40px;
   background-color: #555;
-}
-
-#product1 {
-  animation: move 2s infinite linear;
-}
-
-#product2 {
   animation: move 3s infinite linear;
 }
 
+#product1 {
+  animation-delay: 0s;
+}
+
+#product2 {
+  animation-delay: 1s;
+}
+
 #product3 {
-  animation: move 4s infinite linear;
+  animation-delay: 2s;
+}
+
+.power-up {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: gold;
+  animation: move 6s infinite linear;
+}
+
+.invisible {
+  display: none;
 }

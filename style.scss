@@ -54,16 +54,31 @@ body {
   width: 20px;
   height: 40px;
   background-color: #555;
-}
-
-#product1 {
-  animation: move 2s infinite linear;
-}
-
-#product2 {
   animation: move 3s infinite linear;
 }
 
+#product1 {
+  animation-delay: 0s; // First obstacle, no delay
+}
+
+#product2 {
+  animation-delay: 1s; // Second obstacle, 1-second delay
+}
+
 #product3 {
-  animation: move 4s infinite linear;
+  animation-delay: 2s; // Third obstacle, 2-second delay
+}
+
+.power-up {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: gold;
+  animation: move 6s infinite linear;
+}
+
+.invisible {
+  display: none;
 }
