@@ -8,6 +8,7 @@
 
 html {
   font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
 :root {
@@ -16,7 +17,7 @@ html {
 
 @keyframes move {
   0% {
-    right: -20%;
+    right: 0%;
   }
   100% {
     right: 100%;
@@ -27,10 +28,10 @@ html {
     bottom: 0;
   }
   33% {
-    bottom: 60px;
+    bottom: 6rem;
   }
   66% {
-    bottom: 60px;
+    bottom: 6rem;
   }
   100% {
     bottom: 0;
@@ -46,7 +47,8 @@ body {
 }
 
 h1 {
-  padding: 5px;
+  padding: 10px;
+  font-size: 32px;
 }
 h1 img {
   width: 30px;
@@ -56,8 +58,9 @@ h1 img {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 600px;
+  width: 60rem;
   padding: 10px;
+  font-size: 16px;
 }
 
 .life {
@@ -72,8 +75,8 @@ h1 img {
 
 .game-board {
   position: relative;
-  width: 600px;
-  height: 200px;
+  width: 60rem;
+  height: 20rem;
   border: 2px solid #333;
   overflow: hidden;
   background-color: #fff;
@@ -82,9 +85,9 @@ h1 img {
 .runner {
   position: absolute;
   bottom: 0;
-  left: 20px;
-  width: 20px;
-  height: 40px;
+  left: 5rem;
+  width: 2rem;
+  height: 4rem;
   background-color: #333;
   transition: width 0.3s, height 0.3s;
 }
@@ -92,8 +95,8 @@ h1 img {
   animation: jump 0.3s linear;
 }
 .runner.duck {
-  width: 30px;
-  height: 20px;
+  width: 3rem;
+  height: 2rem;
   background-color: #444;
 }
 
@@ -101,22 +104,51 @@ h1 img {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 15px;
-  height: 30px;
+  width: 1.5rem;
+  height: 3rem;
   background-color: #555;
   animation: move 2s linear;
 }
 
 .power-up {
   position: absolute;
-  bottom: 60px;
+  bottom: 6rem;
   right: 0;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   background-color: gold;
   animation: move 6s infinite linear;
 }
 
-.invisible {
-  display: none;
+.buttons {
+  display: flex;
+  width: 60rem;
+}
+.buttons button {
+  flex: 1;
+  padding: 10px;
+  margin: 10px 5px;
+  font-weight: bold;
+  border: 2px solid grey;
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (max-width: 750px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 6px;
+  }
+}
+@media (max-width: 370px) {
+  html {
+    font-size: 4px;
+  }
 }
