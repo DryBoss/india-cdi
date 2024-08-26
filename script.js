@@ -3,11 +3,13 @@ const root = document.documentElement;
 const runner = document.getElementById("runner");
 const product = document.getElementById("product");
 const powerUp = document.getElementById("power-up");
+const buttonJump = document.getElementById("button-jump");
+const buttonDuck = document.getElementById("button-duck");
 
 //game variables
 let isJumping = false;
 let isDucking = false;
-let speedFactor = 1;
+let speedFactor = 2;
 let score = 0;
 
 //controls
@@ -27,6 +29,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+buttonJump.addEventListener("click", () => {
+  if (!isJumping) {
+    jump();
+  }
+});
+
+buttonDuck.addEventListener("click", () => {
+  if (!isDucking) {
+    duck();
+  }
+});
+
 const jump = () => {
   if (!isJumping) {
     isJumping = true;
@@ -35,7 +49,7 @@ const jump = () => {
     setTimeout(() => {
       isJumping = false;
       runner.classList.remove("jump");
-    }, speedFactor * 350);
+    }, 400);
   }
 };
 
@@ -47,13 +61,13 @@ const duck = () => {
     setTimeout(() => {
       isDucking = false;
       runner.classList.remove("duck");
-    }, speedFactor * 350);
+    }, 300);
   }
 };
 
 product.addEventListener("animationend", (event) => {
   product.style.animation = "none";
-  product.style.bottom = Math.floor(Math.random() * 40) + "px";
+  product.style.bottom = Math.floor(Math.random() * 60) + "px";
   product.offsetHeight; // Trigger reflow to restart animation
   product.style.animation = `move ${2 / speedFactor}s linear`;
 });
@@ -80,7 +94,11 @@ let isAlive = setInterval(() => {
   handleCollision();
 
   // Increase speed over time
-  speedFactor += 0.0001;
+  if (speedFactor < 2) {
+    speedFactor += 0.001;
+  } else if (speedFactor < 3) {
+    speedFactor += 0.0001;
+  }
   root.style.setProperty("--speedFactor", `${speedFactor}s`);
 
   product.style.animationDuration = `${2 / speedFactor}s`;

@@ -38,7 +38,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 60rem;
+  width: 50rem;
   padding: 10px;
   font-size: 16px;
 }
@@ -55,7 +55,7 @@ h1 {
 
 .game-board {
   position: relative;
-  width: 60rem;
+  width: 50rem;
   height: 20rem;
   border: 2px solid #333;
   overflow: hidden;
@@ -71,7 +71,7 @@ h1 {
   background-color: #333;
   transition: width 0.3s, height 0.3s;
   &.jump {
-    animation: jump 0.3s linear;
+    animation: jump 0.4s linear;
   }
   &.duck {
     width: 3rem;
@@ -102,7 +102,7 @@ h1 {
 
 .buttons {
   display: flex;
-  width: 60rem;
+  width: 50rem;
   button {
     flex: 1;
     padding: 10px;
@@ -112,26 +112,37 @@ h1 {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
   html {
     font-size: 12px;
   }
 }
 
-@media (max-width: 750px) {
-  html {
-    font-size: 8px;
+@media (max-width: 650px) {
+  .game-info,
+  .game-board,
+  .buttons {
+    width: 100vw;
+  }
+  .game-board {
+    height: 40vw;
   }
 }
 
 @media (max-width: 500px) {
   html {
-    font-size: 6px;
+    font-size: 10px;
   }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 400px) {
   html {
-    font-size: 4px;
+    font-size: 8px;
   }
 }

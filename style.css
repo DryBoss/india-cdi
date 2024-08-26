@@ -28,10 +28,10 @@ html {
     bottom: 0;
   }
   33% {
-    bottom: 6rem;
+    bottom: 7rem;
   }
   66% {
-    bottom: 6rem;
+    bottom: 7rem;
   }
   100% {
     bottom: 0;
@@ -58,7 +58,7 @@ h1 img {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 60rem;
+  width: 50rem;
   padding: 10px;
   font-size: 16px;
 }
@@ -75,7 +75,7 @@ h1 img {
 
 .game-board {
   position: relative;
-  width: 60rem;
+  width: 50rem;
   height: 20rem;
   border: 2px solid #333;
   overflow: hidden;
@@ -92,7 +92,7 @@ h1 img {
   transition: width 0.3s, height 0.3s;
 }
 .runner.jump {
-  animation: jump 0.3s linear;
+  animation: jump 0.4s linear;
 }
 .runner.duck {
   width: 3rem;
@@ -122,7 +122,7 @@ h1 img {
 
 .buttons {
   display: flex;
-  width: 60rem;
+  width: 50rem;
 }
 .buttons button {
   flex: 1;
@@ -132,23 +132,33 @@ h1 img {
   border: 2px solid grey;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-width: 700px) {
   html {
     font-size: 12px;
   }
 }
-@media (max-width: 750px) {
-  html {
-    font-size: 8px;
+@media (max-width: 650px) {
+  .game-info,
+  .game-board,
+  .buttons {
+    width: 100vw;
+  }
+  .game-board {
+    height: 40vw;
   }
 }
 @media (max-width: 500px) {
   html {
-    font-size: 6px;
+    font-size: 10px;
   }
 }
-@media (max-width: 370px) {
+@media (max-width: 400px) {
   html {
-    font-size: 4px;
+    font-size: 8px;
   }
 }
