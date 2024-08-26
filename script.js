@@ -51,6 +51,13 @@ const duck = () => {
   }
 };
 
+product.addEventListener("animationend", (event) => {
+  product.style.animation = "none";
+  product.style.bottom = Math.floor(Math.random() * 30) + "px";
+  product.offsetHeight; // Trigger reflow to restart animation
+  product.style.animation = `move ${2 / speedFactor}s linear`;
+});
+
 const checkCollision = (runnerRect, productRect) => {
   return !(
     runnerRect.right < productRect.left ||
