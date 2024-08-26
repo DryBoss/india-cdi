@@ -1,11 +1,7 @@
 //selecting elements
 const root = document.documentElement;
 const runner = document.getElementById("runner");
-const products = [
-  document.getElementById("product1"),
-  document.getElementById("product2"),
-  document.getElementById("product3"),
-];
+const product = document.getElementById("product");
 const powerUp = document.getElementById("power-up");
 
 //game variables
@@ -39,7 +35,7 @@ const jump = () => {
     setTimeout(() => {
       isJumping = false;
       runner.classList.remove("jump");
-    }, 300);
+    }, speedFactor * 350);
   }
 };
 
@@ -67,20 +63,10 @@ const checkCollision = (runnerRect, productRect) => {
 const handleCollision = () => {
   const runnerRect = runner.getBoundingClientRect();
 
-  products.forEach((product) => {
-    const productRect = product.getBoundingClientRect();
-    if (checkCollision(runnerRect, productRect)) {
-      alert(`Game Over! Final Score: ${score}`);
-      document.location.reload();
-    }
-  });
-
-  /*const powerUpRect = powerUp.getBoundingClientRect();
-  if (checkCollision(runnerRect, powerUpRect)) {
-    score += 10;
-    powerUp.style.display = "none"; // Hide the power-up after collection
-    setTimeout(() => (powerUp.style.display = "block"), 10000); // Reappear after 10 seconds
-  }*/
+  const productRect = product.getBoundingClientRect();
+  if (checkCollision(runnerRect, productRect)) {
+    document.location.reload();
+  }
 };
 
 let isAlive = setInterval(() => {
@@ -90,11 +76,9 @@ let isAlive = setInterval(() => {
   speedFactor += 0.001;
   root.style.setProperty("--speedFactor", `${speedFactor}s`);
 
-  products.forEach((product) => {
-    product.style.animationDuration = `${2 / speed}s`;
-  });
-  powerUp.style.animationDuration = `${6 / speed}s`;
+  product.style.animationDuration = `${2 / speedFactor}s`;
+  powerUp.style.animationDuration = `${6 / speedFactor}s`;
 
   // Update score
-  score += Math.floor(speed);
+  score += 1;
 }, 10);
