@@ -57,10 +57,10 @@ body {
   width: 20px;
   height: 40px;
   background-color: #333;
-  transition: width calc(var(--speedFactor) / 3), height calc(var(--speedFactor) / 3);
+  transition: width 0.3s, height 0.3s;
 }
 .runner.jump {
-  animation: jump calc(var(--speedFactor) / 3) linear;
+  animation: jump 0.3s linear;
 }
 .runner.duck {
   width: 30px;

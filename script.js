@@ -47,7 +47,7 @@ const duck = () => {
     setTimeout(() => {
       isDucking = false;
       runner.classList.remove("duck");
-    }, 300);
+    }, speedFactor * 350);
   }
 };
 
@@ -73,7 +73,7 @@ let isAlive = setInterval(() => {
   handleCollision();
 
   // Increase speed over time
-  speedFactor += 0.001;
+  speedFactor += 0.0001;
   root.style.setProperty("--speedFactor", `${speedFactor}s`);
 
   product.style.animationDuration = `${2 / speedFactor}s`;
