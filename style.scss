@@ -25,6 +25,31 @@ body {
   background-color: #f7f7f7;
 }
 
+h1 {
+  padding: 5px;
+  img {
+    width: 30px;
+  }
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 600px;
+  padding: 10px;
+}
+
+.life {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  background-image: url(./assets/images/heart.png);
+}
+
 .game-board {
   position: relative;
   width: 600px;
