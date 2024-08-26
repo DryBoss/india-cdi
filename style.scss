@@ -53,12 +53,17 @@ body {
 
 .product {
   position: absolute;
-  bottom: 0;
   right: 0;
   width: 15px;
   height: 30px;
   background-color: #555;
   animation: move 2s infinite linear;
+  &#ground {
+    bottom: 0;
+  }
+  &#up {
+    bottom: 30px;
+  }
 }
 
 .power-up {
