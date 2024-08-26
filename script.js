@@ -1,16 +1,12 @@
 //selecting elements
 const root = document.documentElement;
 const runner = document.getElementById("runner");
-const products = [
-  document.getElementById("ground"),
-  document.getElementById("up"),
-];
+const product = document.getElementById("product");
 const powerUp = document.getElementById("power-up");
 
 //game variables
 let isJumping = false;
 let isDucking = false;
-let productHeight = [];
 let speedFactor = 1;
 let score = 0;
 
@@ -67,12 +63,10 @@ const checkCollision = (runnerRect, productRect) => {
 const handleCollision = () => {
   const runnerRect = runner.getBoundingClientRect();
 
-  products.forEach((product) => {
-    const productRect = product.getBoundingClientRect();
-    if (checkCollision(runnerRect, productRect)) {
-      document.location.reload();
-    }
-  });
+  const productRect = product.getBoundingClientRect();
+  if (checkCollision(runnerRect, productRect)) {
+    document.location.reload();
+  }
 };
 
 let isAlive = setInterval(() => {
