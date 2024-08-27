@@ -45,18 +45,23 @@ html {
 @keyframes jump {
   0% {
     bottom: 0;
+    height: 4rem;
   }
   25% {
     bottom: 6rem;
+    height: 3rem;
   }
   50% {
     bottom: 8rem;
+    height: 2rem;
   }
   75% {
     bottom: 6rem;
+    height: 3rem;
   }
   100% {
     bottom: 0;
+    height: 4rem;
   }
 }
 /* Body Styles */
