@@ -78,7 +78,7 @@ h1 {
     transition: width 0.3s, height 0.3s;
     animation: run 0.2s infinite linear;
     &.jump {
-      animation: jump 0.4s linear;
+      animation: jump 0.5s linear;
     }
     &.duck {
       width: 3rem;
@@ -89,8 +89,8 @@ h1 {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
     animation: move 2s linear;
   }
   .power-up {
@@ -113,6 +113,7 @@ h1 {
     padding: 10px;
     margin: 5px;
     font-weight: bold;
+    background-color: #fff;
     border: 2px solid #333;
     border-radius: 5px;
     font-weight: bold;
@@ -129,6 +130,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px 20px;
+  background-color: #faf9f6;
   text-align: center;
   line-height: 30px;
   border: 2px solid black;
@@ -138,6 +140,7 @@ h1 {
     padding: 10px 20px;
     margin: 5px;
     border-radius: 10px;
+    background-color: #fff;
   }
 }
 

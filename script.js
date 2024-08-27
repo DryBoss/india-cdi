@@ -19,6 +19,7 @@ let speedFactor = 1;
 let isJumping = false;
 let isDucking = false;
 let collisionHandled = false;
+const damageTaken = new Audio("./assets/sound/damage.mp3");
 let score = 0; //score variables
 //checking if highscore already available and setting it to show in highscore show paragraph
 if (localStorage.getItem("highScore")) {
@@ -86,7 +87,7 @@ const jump = () => {
     setTimeout(() => {
       isJumping = false;
       runner.classList.remove("jump");
-    }, 400);
+    }, 500);
   }
 };
 const duck = () => {
@@ -133,6 +134,7 @@ const handleCollision = () => {
   const productRect = product.getBoundingClientRect();
   if (checkCollision(runnerRect, productRect)) {
     if (!collisionHandled) {
+      damageTaken.play();
       life--;
       lifeShow.textContent = life;
       collisionHandled = true;
