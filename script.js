@@ -1,35 +1,36 @@
-//selecting elements
-const root = document.documentElement;
-const scoreShow = document.getElementById("score");
+// Selecting elements
+const root = document.documentElement; //document
+const scoreShow = document.getElementById("score"); //game info section
 const highscoreShow = document.getElementById("highscore");
 const lifeShow = document.getElementById("life");
-const runner = document.getElementById("runner");
+const runner = document.getElementById("runner"); //game board section
 const product = document.getElementById("product");
 const powerUp = document.getElementById("power-up");
-const buttonJump = document.getElementById("button-jump");
+const buttonJump = document.getElementById("button-jump"); //buttons section
 const buttonDuck = document.getElementById("button-duck");
-const gameOver = document.getElementById("game-over");
+const gameOverDialog = document.getElementById("game-over"); //game over dialog
 const finalComment = document.getElementById("final-comment");
 const finalScore = document.getElementById("final-score");
 const buttonPlayAgain = document.getElementById("play-again");
 
 //game variables
-let gamePaused = false;
+let gamePaused = false; //game variables
+let speedFactor = 1;
 let isJumping = false;
 let isDucking = false;
-let speedFactor = 1;
-let score = 0;
+let collisionHandled = false;
+let score = 0; //score variables
+//checking if highscore already available and setting it to show in highscore show paragraph
 if (localStorage.getItem("highScore")) {
-  //setting initial highscore, when website finish loading
   highscoreShow.textContent = localStorage.getItem("highScore");
 } else {
   localStorage.setItem("highScore", 0);
 }
-let highscore = localStorage.getItem("highScore");
-let life = 3;
-const products = ["zee-cinema.png"];
-let collisionHandled = false;
+let highscore = localStorage.getItem("highScore"); //setting highsore from localstorage
+let life = 3; //life variables
+const products = ["zee-cinema.png"]; //product array indicating image
 
+//disabling all animations to freeze the gme after loss
 const disableAnimations = () => {
   const style = document.createElement("style");
   style.type = "text/css";
@@ -43,6 +44,7 @@ const disableAnimations = () => {
 };
 
 //controls
+//keyboard controls
 document.addEventListener("keydown", (event) => {
   switch (event.code) {
     case "ArrowUp":
@@ -60,35 +62,33 @@ document.addEventListener("keydown", (event) => {
       break;
   }
 });
-
+//ui button controls
 buttonJump.addEventListener("click", () => {
   if (!isJumping) {
     jump();
   }
 });
-
 buttonDuck.addEventListener("click", () => {
   if (!isDucking) {
     duck();
   }
 });
-
+//dialog button controls
 buttonPlayAgain.addEventListener("click", () => {
   document.location.reload();
 });
 
+//movement functions
 const jump = () => {
   if (!isJumping) {
     isJumping = true;
     runner.classList.add("jump");
-
     setTimeout(() => {
       isJumping = false;
       runner.classList.remove("jump");
     }, 400);
   }
 };
-
 const duck = () => {
   if (!gamePaused) {
     if (!isDucking) {
@@ -103,16 +103,20 @@ const duck = () => {
   }
 };
 
+//each product cycle end
 product.addEventListener("animationend", (event) => {
+  //random selecting product
   product.src =
     "./assets/images/products/" +
     products[Math.floor(Math.random()) * products.length];
+  //Starting new animation with new speed and height
   product.style.animation = "none";
   product.style.bottom = Math.floor(Math.random() * 6) + "rem";
   product.offsetHeight; // Trigger reflow to restart animation
   product.style.animation = `move ${2 / speedFactor}s linear`;
 });
 
+//checking for collision
 const checkCollision = (runnerRect, productRect) => {
   return !(
     runnerRect.right < productRect.left ||
@@ -122,13 +126,14 @@ const checkCollision = (runnerRect, productRect) => {
   );
 };
 
+//what to do after collision
 const handleCollision = () => {
   const runnerRect = runner.getBoundingClientRect();
-
+  //for collison with product
   const productRect = product.getBoundingClientRect();
   if (checkCollision(runnerRect, productRect)) {
     if (!collisionHandled) {
-      life--; // Decrease life by 1
+      life--;
       lifeShow.textContent = life;
       collisionHandled = true;
       if (!life) {
@@ -140,7 +145,7 @@ const handleCollision = () => {
         if (score > highscore) {
           localStorage.setItem("highScore", Math.floor(score));
         }
-        gameOver.style.display = "block";
+        gameOverDialog.style.display = "block";
         window.clearInterval(gameLoop);
         disableAnimations();
         gamePaused = true;

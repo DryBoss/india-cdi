@@ -1,0 +1,37 @@
+@media (max-width: 900px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 650px) {
+  .game-info,
+  .buttons {
+    width: 100vw;
+  }
+  .game-board {
+    width: 100vw;
+    height: 40vw;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 8px;
+  }
+}

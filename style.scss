@@ -1,31 +1,34 @@
+/* Global Styles */
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   margin: 0;
-  overflow-x: hidden;
 }
-
 html {
   font-family: Arial, sans-serif;
   font-size: 16px;
 }
 
+/* Variables */
 :root {
   --speedFactor: 1s; /* Default animation duration */
 }
 
+/* Import Animations */
 @import "animations";
 
+/* Body Styles */
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f7f7;
+  background-color: #faf9f6;
 }
 
+/* Header Styles */
 h1 {
   padding: 10px;
   font-size: 32px;
@@ -33,7 +36,11 @@ h1 {
     width: 30px;
   }
 }
+.description {
+  font-weight: bold;
+}
 
+/* Game Info Styles */
 .game-info {
   display: flex;
   justify-content: space-around;
@@ -41,62 +48,61 @@ h1 {
   width: 50rem;
   padding: 10px;
   font-size: 16px;
+  .life {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    background-image: url(./assets/images/heart.png);
+  }
 }
 
-.life {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  color: #fff;
-  background-image: url(./assets/images/heart.png);
-}
-
+/*Game Board Styles*/
 .game-board {
   position: relative;
   width: 50rem;
   height: 20rem;
   border: 2px solid #333;
+  border-radius: 5px;
   overflow: hidden;
   background-color: #fff;
-}
-
-.runner {
-  position: absolute;
-  bottom: 0;
-  left: 5rem;
-  width: 2rem;
-  height: 4rem;
-  transition: width 0.3s, height 0.3s;
-  animation: run 0.2s infinite linear;
-  &.jump {
-    animation: jump 0.4s linear;
+  .runner {
+    position: absolute;
+    bottom: 0;
+    left: 5rem;
+    width: 2rem;
+    height: 4rem;
+    transition: width 0.3s, height 0.3s;
+    animation: run 0.2s infinite linear;
+    &.jump {
+      animation: jump 0.4s linear;
+    }
+    &.duck {
+      width: 3rem;
+      height: 2rem;
+    }
   }
-  &.duck {
-    width: 3rem;
+  .product {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    animation: move 2s linear;
+  }
+  .power-up {
+    position: absolute;
+    bottom: 6rem;
+    right: 0;
+    width: 2rem;
     height: 2rem;
+    animation: move 6s infinite linear;
   }
 }
 
-.product {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 2rem;
-  height: 2rem;
-  animation: move 2s linear;
-}
-
-.power-up {
-  position: absolute;
-  bottom: 6rem;
-  right: 0;
-  width: 2rem;
-  height: 2rem;
-  animation: move 6s infinite linear;
-}
-
+/*Buttons Style*/
 .buttons {
   display: flex;
   width: 50rem;
@@ -106,11 +112,16 @@ h1 {
     padding: 10px;
     margin: 5px;
     font-weight: bold;
-    border: 2px solid grey;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-weight: bold;
   }
 }
 
+/*Game Over Dialog Style*/
 .game-over {
+  font-size: 16px;
+  font-weight: bold;
   display: none;
   position: absolute;
   top: 50%;
@@ -122,46 +133,12 @@ h1 {
   border: 2px solid black;
   border-radius: 10px;
   button {
+    font-weight: bold;
     padding: 10px 20px;
-    background-color: transparent;
+    margin: 5px;
     border-radius: 10px;
   }
 }
 
-@media (max-width: 900px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 700px) {
-  html {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 650px) {
-  .game-info,
-  .game-board,
-  .buttons {
-    width: 100vw;
-  }
-  .game-board {
-    height: 40vw;
-  }
-  .buttons {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 500px) {
-  html {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 400px) {
-  html {
-    font-size: 8px;
-  }
-}
+/* Import Responsive */
+@import "responsive";
