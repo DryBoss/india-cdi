@@ -68,15 +68,14 @@ h1 {
   left: 5rem;
   width: 2rem;
   height: 4rem;
-  background-color: #333;
   transition: width 0.3s, height 0.3s;
+  animation: run 0.2s infinite linear;
   &.jump {
     animation: jump 0.4s linear;
   }
   &.duck {
     width: 3rem;
     height: 2rem;
-    background-color: #444;
   }
 }
 
@@ -84,9 +83,8 @@ h1 {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 1.5rem;
-  height: 3rem;
-  background-color: #555;
+  width: 2rem;
+  height: 2rem;
   animation: move 2s linear;
 }
 
@@ -96,7 +94,6 @@ h1 {
   right: 0;
   width: 2rem;
   height: 2rem;
-  background-color: gold;
   animation: move 6s infinite linear;
 }
 

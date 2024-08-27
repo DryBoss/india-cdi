@@ -11,6 +11,7 @@ let isJumping = false;
 let isDucking = false;
 let speedFactor = 1;
 let score = 0;
+const products = ["zee-cinema.png"];
 
 //controls
 document.addEventListener("keydown", (event) => {
@@ -66,6 +67,9 @@ const duck = () => {
 };
 
 product.addEventListener("animationend", (event) => {
+  product.src =
+    "./assets/images/products/" +
+    products[Math.floor(Math.random()) * products.length];
   product.style.animation = "none";
   product.style.bottom = Math.floor(Math.random() * 6) + "rem";
   product.offsetHeight; // Trigger reflow to restart animation
