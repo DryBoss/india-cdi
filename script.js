@@ -9,7 +9,7 @@ const buttonDuck = document.getElementById("button-duck");
 //game variables
 let isJumping = false;
 let isDucking = false;
-let speedFactor = 2;
+let speedFactor = 1;
 let score = 0;
 
 //controls
@@ -67,7 +67,7 @@ const duck = () => {
 
 product.addEventListener("animationend", (event) => {
   product.style.animation = "none";
-  product.style.bottom = Math.floor(Math.random() * 60) + "px";
+  product.style.bottom = Math.floor(Math.random() * 6) + "rem";
   product.offsetHeight; // Trigger reflow to restart animation
   product.style.animation = `move ${2 / speedFactor}s linear`;
 });
@@ -94,11 +94,7 @@ let isAlive = setInterval(() => {
   handleCollision();
 
   // Increase speed over time
-  if (speedFactor < 2) {
-    speedFactor += 0.001;
-  } else if (speedFactor < 3) {
-    speedFactor += 0.0001;
-  }
+  speedFactor += 0.0001;
   root.style.setProperty("--speedFactor", `${speedFactor}s`);
 
   product.style.animationDuration = `${2 / speedFactor}s`;
