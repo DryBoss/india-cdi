@@ -14,14 +14,33 @@ const finalScore = document.getElementById("final-score");
 const buttonPlayAgain = document.getElementById("play-again");
 
 //game variables
+let gamePaused = false;
 let isJumping = false;
 let isDucking = false;
 let speedFactor = 1;
 let score = 0;
-let highscore = 0;
+if (localStorage.getItem("highScore")) {
+  //setting initial highscore, when website finish loading
+  highscoreShow.textContent = localStorage.getItem("highScore");
+} else {
+  localStorage.setItem("highScore", 0);
+}
+let highscore = localStorage.getItem("highScore");
 let life = 3;
 const products = ["zee-cinema.png"];
 let collisionHandled = false;
+
+const disableAnimations = () => {
+  const style = document.createElement("style");
+  style.type = "text/css";
+  style.innerHTML = `
+    * {
+      animation-play-state: paused !important;
+      transition: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+};
 
 //controls
 document.addEventListener("keydown", (event) => {
@@ -33,6 +52,8 @@ document.addEventListener("keydown", (event) => {
       }
       break;
     case "ArrowDown":
+    case "ControlLeft":
+    case "ControlRight":
       if (!isDucking) {
         duck();
       }
@@ -69,14 +90,16 @@ const jump = () => {
 };
 
 const duck = () => {
-  if (!isDucking) {
-    isDucking = true;
-    runner.classList.add("duck");
+  if (!gamePaused) {
+    if (!isDucking) {
+      isDucking = true;
+      runner.classList.add("duck");
 
-    setTimeout(() => {
-      isDucking = false;
-      runner.classList.remove("duck");
-    }, 300);
+      setTimeout(() => {
+        isDucking = false;
+        runner.classList.remove("duck");
+      }, 300);
+    }
   }
 };
 
@@ -114,7 +137,13 @@ const handleCollision = () => {
             ? "oi mama na pls!"
             : "dhon khelso vaiya, shei hoice!";
         finalScore.textContent = Math.floor(score);
+        if (score > highscore) {
+          localStorage.setItem("highScore", Math.floor(score));
+        }
         gameOver.style.display = "block";
+        window.clearInterval(gameLoop);
+        disableAnimations();
+        gamePaused = true;
       } // Set flag to true to indicate collision handled
     }
   } else {
@@ -131,7 +160,7 @@ const handleCollision = () => {
   }
 };
 
-let isAlive = setInterval(() => {
+let gameLoop = setInterval(() => {
   handleCollision();
 
   // Increase speed over time
