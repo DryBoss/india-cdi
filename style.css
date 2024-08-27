@@ -137,13 +137,22 @@ h1 img {
 .buttons {
   display: flex;
   width: 50rem;
+  margin-top: 5px;
 }
 .buttons button {
   flex: 1;
   padding: 10px;
-  margin: 10px 5px;
+  margin: 5px;
   font-weight: bold;
   border: 2px solid grey;
+}
+
+.game-over {
+  font-weight: bold;
+}
+
+.invisible {
+  display: none;
 }
 
 @media (max-width: 900px) {
@@ -164,6 +173,9 @@ h1 img {
   }
   .game-board {
     height: 40vw;
+  }
+  .buttons {
+    flex-direction: column;
   }
 }
 @media (max-width: 500px) {
