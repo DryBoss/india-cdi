@@ -99,7 +99,7 @@ const duck = () => {
       setTimeout(() => {
         isDucking = false;
         runner.classList.remove("duck");
-      }, 300);
+      }, 500);
     }
   }
 };
@@ -112,7 +112,7 @@ product.addEventListener("animationend", (event) => {
     products[Math.floor(Math.random()) * products.length];
   //Starting new animation with new speed and height
   product.style.animation = "none";
-  product.style.bottom = Math.floor(Math.random() * 6) + "rem";
+  product.style.bottom = Math.floor(Math.random() * 4) + "rem";
   product.offsetHeight; // Trigger reflow to restart animation
   product.style.animation = `move ${2 / speedFactor}s linear`;
 });
@@ -127,6 +127,29 @@ const checkCollision = (runnerRect, productRect) => {
   );
 };
 
+const updateLife = () => {
+  switch (life) {
+    case 0:
+      lifeShow.style.width = "0px";
+      break;
+    case 1:
+      lifeShow.style.width = "30px";
+      break;
+    case 2:
+      lifeShow.style.width = "60px";
+      break;
+    case 3:
+      lifeShow.style.width = "90px";
+      break;
+    case 4:
+      lifeShow.style.width = "120px";
+      break;
+    case 5:
+      lifeShow.style.width = "150px";
+      break;
+  }
+};
+
 //what to do after collision
 const handleCollision = () => {
   const runnerRect = runner.getBoundingClientRect();
@@ -136,7 +159,7 @@ const handleCollision = () => {
     if (!collisionHandled) {
       damageTaken.play();
       life--;
-      lifeShow.textContent = life;
+      updateLife();
       collisionHandled = true;
       if (!life) {
         finalComment.textContent =
@@ -160,8 +183,8 @@ const handleCollision = () => {
   const powerUpRect = powerUp.getBoundingClientRect();
   if (checkCollision(runnerRect, powerUpRect)) {
     score += 5;
-    life++;
-    lifeShow.textContent = life;
+    life < 5 ? life++ : life;
+    updateLife();
     powerUp.style.display = "none"; // Hide the power-up after collection
     setTimeout(() => (powerUp.style.display = "block"), 10000); // Reappear after 10 seconds
   }

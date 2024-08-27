@@ -46,11 +46,14 @@ html {
   0% {
     bottom: 0;
   }
-  33% {
-    bottom: 7rem;
+  25% {
+    bottom: 6rem;
   }
-  66% {
-    bottom: 7rem;
+  50% {
+    bottom: 8rem;
+  }
+  75% {
+    bottom: 6rem;
   }
   100% {
     bottom: 0;
@@ -93,9 +96,8 @@ h1 img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
+  width: 90px;
   height: 30px;
-  color: #fff;
   background-image: url(./assets/images/heart.png);
 }
 
