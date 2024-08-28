@@ -36,7 +36,7 @@ html {
 }
 @keyframes move {
   0% {
-    right: 0%;
+    right: -20%;
   }
   100% {
     right: 100%;
@@ -103,7 +103,7 @@ h1 img {
   align-items: center;
   width: 90px;
   height: 30px;
-  background-image: url(./assets/images/heart.png);
+  background-image: url(../assets/images/heart.png);
 }
 
 /*Game Board Styles*/
@@ -133,6 +133,10 @@ h1 img {
   height: 2rem;
 }
 .game-board .product {
+  object-fit: contain;
+  box-shadow: 0px 0px 20px 5px red;
+  border: 2px solid red;
+  border-radius: 5px;
   position: absolute;
   bottom: 0;
   right: 0;

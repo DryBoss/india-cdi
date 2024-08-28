@@ -13,6 +13,9 @@ const finalComment = document.getElementById("final-comment");
 const finalScore = document.getElementById("final-score");
 const buttonPlayAgain = document.getElementById("play-again");
 
+//imports
+import products from "./list.js";
+
 //game variables
 let gamePaused = false; //game variables
 let speedFactor = 1;
@@ -29,7 +32,6 @@ if (localStorage.getItem("highScore")) {
 }
 let highscore = localStorage.getItem("highScore"); //setting highsore from localstorage
 let life = 3; //life variables
-const products = ["zee-cinema.png"]; //product array indicating image
 
 //disabling all animations to freeze the gme after loss
 const disableAnimations = () => {
@@ -109,7 +111,7 @@ product.addEventListener("animationend", (event) => {
   //random selecting product
   product.src =
     "./assets/images/products/" +
-    products[Math.floor(Math.random()) * products.length];
+    products[Math.floor(Math.random() * products.length)];
   //Starting new animation with new speed and height
   product.style.animation = "none";
   product.style.bottom = Math.floor(Math.random() * 4) + "rem";
