@@ -1,35 +1,36 @@
-//products
-const products = [
-  //common
-  "zee-bangla.png",
-  "zee-bangla.png",
+// Define product categories
+const veryCommonProducts = [
   "zee-bangla.png",
   "star-jalsha.png",
-  "star-jalsha.png",
-  "star-jalsha.png",
-  "sony-sab.png",
-  "sony-sab.png",
   "sony-sab.png",
   "t-series.png",
-  "t-series.png",
-  "t-series.png",
-  "horlicks.png",
-  "horlicks.png",
-  "horlicks.png",
-  //rare
-  "asian-paints.png",
-  "asian-paints.png",
-  "mahindra.png",
-  "mahindra.png",
-  "tata.png",
-  "tata.png",
-  "parachute-hair-oil.png",
-  "parachute-hair-oil.png",
-  "prestige.png",
-  "prestige.png",
-  //epic
-  "khuni-hasina.png",
-  "khunir-chele-joy.png",
-]; //product array indicating image
+];
 
+const commonProducts = [
+  "horlicks.png",
+  "parachute-hair-oil.png",
+  "prestige.png",
+];
+
+const rareProducts = ["asian-paints.png", "mahindra.png", "tata.png"];
+
+const extremelyRareProducts = [];
+
+const epicProducts = ["khuni-hasina.png", "khunir-chele-joy.png"];
+
+//list with multiple entries for weighted randomness
+function createWeightedList(productArray, weight) {
+  return productArray.flatMap((product) => Array(weight).fill(product));
+}
+
+//full list of products
+const products = [
+  ...createWeightedList(veryCommonProducts, 5), // Common products appear more frequently
+  ...createWeightedList(commonProducts, 4), // Common products appear more frequently
+  ...createWeightedList(rareProducts, 3), // Rare products appear less frequently
+  ...createWeightedList(extremelyRareProducts, 2), // Rare products appear less frequently
+  ...epicProducts, // Epic products appear only once each
+];
+
+//export
 export default products;

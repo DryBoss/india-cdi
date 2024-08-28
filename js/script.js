@@ -3,7 +3,8 @@ const root = document.documentElement; //document
 const scoreShow = document.getElementById("score"); //game info section
 const highscoreShow = document.getElementById("highscore");
 const lifeShow = document.getElementById("life");
-const runner = document.getElementById("runner"); //game board section
+const productName = document.getElementById("product-name"); //game board section
+const runner = document.getElementById("runner");
 const product = document.getElementById("product");
 const powerUp = document.getElementById("power-up");
 const buttonJump = document.getElementById("button-jump"); //buttons section
@@ -23,6 +24,8 @@ let isJumping = false;
 let isDucking = false;
 let collisionHandled = false;
 const damageTaken = new Audio("./assets/sound/damage.mp3");
+let randomProduct = "";
+
 let score = 0; //score variables
 //checking if highscore already available and setting it to show in highscore show paragraph
 if (localStorage.getItem("highScore")) {
@@ -106,12 +109,27 @@ const duck = () => {
   }
 };
 
+function convertFilenameToTitle(filename) {
+  // Step 1: Remove the file extension
+  const nameWithoutExtension = filename.replace(/\.png$/, "");
+  // Step 2: Replace hyphens with spaces and capitalize each word
+  const titleCaseName = nameWithoutExtension.replace(
+    /-([a-z])/g,
+    (match, letter) => {
+      return " " + letter.toUpperCase();
+    }
+  );
+  // Step 3: Capitalize the first character of the result
+  return titleCaseName.charAt(0).toUpperCase() + titleCaseName.slice(1);
+}
+
 //each product cycle end
 product.addEventListener("animationend", (event) => {
   //random selecting product
-  product.src =
-    "./assets/images/products/" +
-    products[Math.floor(Math.random() * products.length)];
+
+  randomProduct = products[Math.floor(Math.random() * products.length)];
+  product.src = "./assets/images/products/" + randomProduct;
+  productName.textContent = convertFilenameToTitle(randomProduct);
   //Starting new animation with new speed and height
   product.style.animation = "none";
   product.style.bottom = Math.floor(Math.random() * 4) + "rem";
