@@ -26,6 +26,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #faf9f6;
+  user-select: none;
 }
 
 /* Header Styles */
@@ -69,6 +70,7 @@ h1 {
   overflow: hidden;
   background-color: #fff;
   .product-name {
+    font-size: 16px;
     color: red;
     position: absolute;
     top: 10%;
