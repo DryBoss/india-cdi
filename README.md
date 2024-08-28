@@ -1,8 +1,8 @@
-# India CDI The Game
+# india cdi The Game
 
 ## Description
 
-**India CDI The Game** is a fun and engaging game inspired by the Chrome Dino game. In this game, the objective is to boycott Indian products by jumping or ducking to avoid touching them. The gameplay is simple yet challenging, requiring quick reflexes to dodge various obstacles.
+**india cdi The Game** is a fun and engaging game inspired by the Chrome Dino game. In this game, the objective is to boycott Indian products by jumping or ducking to avoid touching them. The gameplay is simple yet challenging, requiring quick reflexes to dodge various obstacles.
 
 [View Product List](./info/Product-List.md)
 
@@ -32,8 +32,8 @@ We have some exciting features planned for the future:
 
 ## Contributing
 
-While we are not actively seeking contributions for this project, you are welcome to help us with fixing bugs or adding very special features. If you have a suggestion or find a bug, please open an issue on the [GitHub Issues page](https://github.com/yourusername/india-cdi-the-game/issues). Your assistance with important fixes or unique features is greatly appreciated!
+While we are not actively seeking contributions for this project, you are welcome to help us with fixing bugs or adding very special features. If you have a suggestion or find a bug, please open an issue on the [GitHub Issues page](https://github.com/yourusername/india-cdi/issues). Your assistance with important fixes or unique features is greatly appreciated!
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License.

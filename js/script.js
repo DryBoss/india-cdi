@@ -15,7 +15,7 @@ const finalScore = document.getElementById("final-score");
 const buttonPlayAgain = document.getElementById("play-again");
 
 //imports
-import products from "./list.js";
+import products from "./product-list.js";
 
 //game variables
 let gamePaused = false; //game variables
